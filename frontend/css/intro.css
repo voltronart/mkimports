@@ -1,0 +1,209 @@
+
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  background: #050505;
+  color: #fff;
+  font-family: "Jost", sans-serif;
+}
+
+.intro-fundo {
+  position: absolute;
+  inset: -4%;
+  z-index: -3;
+
+  background: url("../assets/intro.jpg") center 55% / cover no-repeat;
+
+  transform: scale(1);
+  filter: brightness(.48) contrast(1.15);
+
+  animation: zoom-reverso 5s ease-out forwards;
+
+  will-change: transform, filter;
+}
+
+@keyframes zoom-reverso {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.05);
+  }
+}
+
+.intro-luz {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, #000b, transparent 50%, #0009),
+    radial-gradient(ellipse at 50% 42%, transparent 0%, #0008 75%),
+    linear-gradient(0deg, #000d, transparent 45%, #0008);
+}
+
+.intro-grain {
+  position: absolute;
+  inset: -50%;
+  z-index: 2;
+  pointer-events: none;
+  opacity: .13;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+  animation: intro-ruido .22s steps(2) infinite;
+}
+
+@keyframes intro-ruido {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(2%, -1%); }
+  50% { transform: translate(-1%, 2%); }
+  75% { transform: translate(1%, 1%); }
+  100% { transform: translate(-2%, -1%); }
+}
+
+.intro-identificacao,
+.intro-rodape {
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 9px;
+  letter-spacing: 2.5px;
+  color: #c3c3c3;
+}
+
+.intro-identificacao {
+  top: 34px;
+}
+
+.intro-rodape {
+  bottom: 32px;
+  font-size: 8px;
+  letter-spacing: 2px;
+}
+
+.intro-centro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  padding: 24px;
+}
+
+.intro-logo {
+  overflow: hidden;
+  line-height: .85;
+}
+
+.intro-logo h1 {
+  font-family: "Anton", sans-serif;
+  font-size: clamp(100px, 17vw, 220px);
+  font-weight: 400;
+  letter-spacing: -.035em;
+  line-height: .9;
+  text-shadow: 0 0 35px #0008;
+}
+
+.intro-logo-sub {
+  display: block;
+  margin-top: 14px;
+  font-size: clamp(16px, 2.2vw, 27px);
+  font-weight: 500;
+  letter-spacing: .48em;
+  padding-left: .48em;
+}
+
+.intro-assinatura {
+  margin-top: 30px;
+  font-size: 10px;
+  letter-spacing: 5px;
+  color: #ddd;
+}
+
+.intro-progresso {
+  position: relative;
+  width: 76px;
+  height: 76px;
+  margin-top: 48px;
+  display: grid;
+  place-items: center;
+}
+
+.intro-circulo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.intro-circulo circle {
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.intro-circulo-base {
+  stroke: #ffffff35;
+}
+
+.intro-circulo-valor {
+  stroke: #fff;
+  stroke-dasharray: 276.46;
+  stroke-dashoffset: 276.46;
+}
+
+.intro-percentual {
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 600px) {
+  .intro-fundo {
+    background-position: 56% center;
+  }
+
+  .intro-identificacao {
+    top: 24px;
+    font-size: 8px;
+    letter-spacing: 1.5px;
+  }
+
+  .intro-logo h1 {
+    font-size: clamp(100px, 25vw, 150px);
+  }
+
+  .intro-assinatura {
+    font-size: 8px;
+    letter-spacing: 3px;
+  }
+
+  .intro-progresso {
+    width: 66px;
+    height: 66px;
+    margin-top: 38px;
+  }
+
+  .intro-rodape {
+    bottom: 24px;
+    font-size: 7px;
+    letter-spacing: 1px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-grain {
+    animation: none;
+  }
+}

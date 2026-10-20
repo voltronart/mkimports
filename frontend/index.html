@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mk Imports</title>
+  <meta name="description" content="Mk Imports: peças importadas. Veja a coleção.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/intro.css">
+ <link rel="stylesheet" href="css/categorias.css">
+ <link rel="stylesheet" href="css/footer.css">
+</head>
+<body>
+ 
+<section class="intro" aria-label="Apresentação MK IMPORTS">
+
+  <div class="intro-fundo"></div>
+  <div class="intro-luz"></div>
+  <div class="intro-grain"></div>
+
+  <div class="intro-identificacao">
+    <span>MK® — IMPORTS</span>
+    <span>DESDE. 2026</span>
+  </div>
+
+  <div class="intro-centro">
+    <div class="intro-logo">
+      <h1>Mk</h1>
+      <span class="intro-logo-sub">IMPORTS</span>
+    </div>
+
+    <p class="intro-assinatura">
+      SEU ESTILO. SUA IDENTIDADE.
+    </p>
+
+    <div class="intro-progresso">
+      <svg class="intro-circulo" viewBox="0 0 100 100"
+           aria-hidden="true">
+        <circle class="intro-circulo-base"
+                cx="50" cy="50" r="44" />
+        <circle class="intro-circulo-valor"
+                cx="50" cy="50" r="44" />
+      </svg>
+
+      <span class="intro-percentual"
+            role="status"
+            aria-live="polite">00%</span>
+    </div>
+  </div>
+
+  <div class="intro-rodape">
+    <span>PRODUTOS IMPORTADOS</span>
+    <span class="intro-status">INICIAR EXPERIÊNCIA</span>
+  </div>
+
+</section>
+
+  
+  
+  
+  
+
+  <!-- NAVBAR: as categorias e subcategorias são carregadas do Firebase pelo js/header.js -->
+  <nav class="barra" id="barra" aria-label="Principal">
+    <a class="marca" href="index.html" aria-label="Mk Imports, página inicial">MK <span>IMPORTS</span></a>
+    <button class="botao-menu" id="botao-menu" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+    <ul class="menu" id="menu" aria-busy="true">
+      <li class="menu-esqueleto"></li><li class="menu-esqueleto"></li><li class="menu-esqueleto"></li><li class="menu-esqueleto"></li>
+    </ul>
+  </nav>
+
+  <!-- HEADER -->
+  <header class="hero" id="topo">
+    <!-- Textura de fundo: coloque sua imagem em img/textura.jpg -->
+    <div class="hero-textura" aria-hidden="true"><div class="hero-textura-img"></div></div>
+
+    <div class="hero-conteudo">
+      <p class="hero-pre">Peças importadas</p>
+      <h1>Seu estilo <em>fala</em> antes de você.</h1>
+      <p class="hero-texto">Escolha com calma, vista com atitude. Cada peça aqui foi pensada para quem entende que roupa também é assinatura.</p>
+      <a class="botao-hero" href="#colecao">Ver coleção</a>
+    </div>
+
+    
+
+    <a class="hero-rolar" href="#colecao" aria-label="Rolar para a coleção"><span></span></a>
+  </header>
+
+  <main id="colecao">
+   <div id="vitrine-categorias"></div>
+  </main>
+
+
+
+
+<div class="rodape-grade">
+
+  <!-- LOCALIZAÇÃO -->
+  <section class="rodape-localizacao">
+    <h3>Onde estamos</h3>
+
+    <address>
+      Jaíba — Minas Gerais, Brasil
+    </address>
+
+    <a
+      class="rodape-botao"
+      href="https://www.google.com/maps/search/?api=1&query=Jaiba%2C+Minas+Gerais"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Como chegar <span aria-hidden="true">↗</span>
+    </a>
+  </section>
+
+  <!-- CATEGORIAS -->
+  <nav class="rodape-categorias" aria-label="Categorias de produtos">
+    <h3>Categorias</h3>
+
+    <ul>
+      <li><a href="#camisetas">Camisetas</a></li>
+      <li><a href="#calcas">Calças</a></li>
+      <li><a href="#shorts">Shorts</a></li>
+      <li><a href="#calcados">Calçados</a></li>
+      <li><a href="#conjuntos">Conjuntos</a></li>
+    </ul>
+  </nav>
+
+  <!-- CONTATO -->
+  <section class="rodape-contato">
+    <h3>Fale com a gente</h3>
+
+    <p class="rodape-contato-descricao">
+      Dúvidas sobre produtos? Entre em contato com a nossa equipe.
+    </p>
+
+    <div class="rodape-redes">
+
+      <a
+        class="rodape-botao"
+        href="https://wa.me/553891977700"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        WhatsApp <span aria-hidden="true">↗</span>
+      </a>
+
+      <a
+        class="rodape-botao"
+        href="https://www.instagram.com/mk_imports_ofc_/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Instagram <span aria-hidden="true">↗</span>
+      </a>
+
+    </div>
+  </section>
+
+</div>
+
+<!-- MAPA -->
+<div class="rodape-mapa">
+  <iframe
+    src="https://www.google.com/maps?q=Jaiba%2C%20Minas%20Gerais%2C%20Brasil&output=embed"
+    title="Localização da MK Imports"
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+  ></iframe>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+  <script type="module" src="js/script.js"></script>
+  <script type="module" src="js/intro.js"></script>
+  <script type="module" src="js/colecao.js"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{colecao}/{doc} {
+      allow read: if colecao in ['categorias', 'subcategorias', 'pecas'];
+      allow write: if request.auth != null
+                   && request.auth.token.email == 'vinivlogert4@gmail.com'
+                   && colecao in ['categorias', 'subcategorias', 'pecas'];
+    }
+  }
+}

@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Produto | Mk Imports</title>
+
+  <link rel="stylesheet" href="css/produto.css">
+
+</head>
+
+<body>
+
+  <!-- Cabeçalho da loja -->
+  <header class="cabecalho">
+    <a href="index.html" class="logo">MK IMPORTS</a>
+
+    <a href="index.html" class="voltar-loja">
+      Continuar comprando
+    </a>
+
+    <a href="carrinho.html" class="link-carrinho">
+      Carrinho <span id="carrinho-contador">0</span>
+    </a>
+  </header>
+
+  <main class="pagina-produto">
+
+    <!-- Caminho de navegação -->
+    <nav class="trilha" id="trilha" aria-label="Navegação">
+      <a href="index.html">Início</a>
+      <span>/</span>
+      <a href="produtos.html">Produtos</a>
+      <span>/</span>
+      <span>Produto</span>
+    </nav>
+
+    <!-- Mensagens de carregamento e erro -->
+    <p id="produto-status" role="status">
+      Carregando produto...
+    </p>
+
+    <!-- Conteúdo preenchido pelo JavaScript -->
+    <section id="produto-conteudo" hidden>
+
+      <div class="produto-galeria">
+
+        <div
+          class="produto-miniaturas"
+          id="produto-miniaturas"
+          aria-label="Galeria de imagens"
+        ></div>
+
+        <div class="produto-imagem-principal">
+          <img id="produto-imagem" src="" alt="">
+        </div>
+
+      </div>
+
+      <div class="produto-informacoes">
+
+        <p id="produto-categoria" class="produto-categoria"></p>
+
+        <h1 id="produto-nome"></h1>
+
+        <p id="produto-preco" class="produto-preco"></p>
+
+        <p id="produto-descricao" class="produto-descricao"></p>
+
+        <!-- Opções de cor -->
+        <fieldset class="produto-opcoes">
+          <legend>
+            Cor: <span id="cor-selecionada">Selecione</span>
+          </legend>
+
+          <div id="produto-cores" class="produto-cores"></div>
+        </fieldset>
+
+        <!-- Opções de tamanho -->
+        <fieldset class="produto-opcoes">
+          <legend>Tamanho</legend>
+
+          <div id="produto-tamanhos" class="produto-tamanhos"></div>
+        </fieldset>
+
+        <!-- Quantidade -->
+        <div class="produto-quantidade">
+          <label for="produto-quantidade">Quantidade</label>
+
+          <input
+            type="number"
+            id="produto-quantidade"
+            min="1"
+            value="1"
+            step="1"
+          >
+        </div>
+
+        <!-- Compra -->
+        <button
+          type="button"
+          id="botao-adicionar-carrinho"
+          class="botao-adicionar-carrinho"
+          disabled
+        >
+          Selecione as opções
+        </button>
+
+        <p id="produto-aviso" role="status" aria-live="polite"></p>
+
+      </div>
+
+    </section>
+
+    <!-- Detalhes complementares -->
+    <section class="produto-detalhes">
+      <h2>Detalhes do produto</h2>
+      <p id="produto-detalhes-descricao"></p>
+    </section>
+
+  </main>
+
+  <footer class="rodape">
+    <p>MK IMPORTS — Estilo que acompanha você.</p>
+  </footer>
+  
+  
+  <script type="module" src="js/produto.js"></script>
+
+
+</body>
+</html>

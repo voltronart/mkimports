@@ -1,0 +1,617 @@
+/* ==========================================
+   MK IMPORTS — FOOTER
+========================================== */
+
+.rodape {
+  --rodape-fundo: #080808;
+  --rodape-superficie: #101010;
+  --rodape-texto: #f5f5f5;
+  --rodape-secundario: #929292;
+  --rodape-linha: rgba(255, 255, 255, 0.13);
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--rodape-fundo);
+  color: var(--rodape-texto);
+  font-family: inherit;
+}
+
+/* Mantém os elementos ocultos pelo HTML realmente ocultos */
+.rodape [hidden] {
+  display: none !important;
+}
+
+/* ==========================================
+   1. FAIXA ANIMADA
+========================================== */
+
+.rodape-faixa {
+  overflow: hidden;
+  width: 100%;
+  border-top: 1px solid var(--rodape-linha);
+  border-bottom: 1px solid var(--rodape-linha);
+  background: var(--rodape-superficie);
+}
+
+.rodape-faixa-trilho {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  gap: 48px;
+  padding: 19px 0;
+
+  animation: mk-faixa-movimento 28s linear infinite;
+  will-change: transform;
+}
+
+.rodape-faixa-trilho span {
+  flex-shrink: 0;
+  color: #a1a1a1;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.rodape-faixa-trilho span:nth-child(3n + 1) {
+  color: #fff;
+}
+
+@keyframes mk-faixa-movimento {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ==========================================
+   2. CORPO DO FOOTER
+========================================== */
+
+.rodape-corpo {
+  width: min(1280px, calc(100% - 100px));
+  margin-inline: auto;
+  padding: 100px 0 70px;
+}
+
+/* ==========================================
+   3. TÍTULO PRINCIPAL
+========================================== */
+
+.rodape-chamada {
+  margin: 0 0 85px;
+  color: var(--rodape-texto);
+
+  font-size: clamp(48px, 7.5vw, 104px);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.075em;
+}
+
+.rodape-chamada em {
+  color: #777;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  letter-spacing: -0.08em;
+}
+
+/* ==========================================
+   4. GRADE DE INFORMAÇÕES
+========================================== */
+
+.rodape-grade {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr 0.9fr;
+  gap: 65px;
+
+  padding: 15px;
+  border-top: 1px solid var(--rodape-linha);
+}
+
+.rodape-grade > section,
+.rodape-grade > nav {
+  min-width: 0;
+}
+
+.rodape-grade h3 {
+  margin: 0 0 25px;
+
+  color: var(--rodape-secundario);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+/* ==========================================
+   5. LOCALIZAÇÃO
+========================================== */
+
+.rodape-localizacao address {
+  max-width: 320px;
+  color: #e6e6e6;
+
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+}
+
+.rodape-horario {
+  margin: 18px 0 0;
+  color: var(--rodape-secundario);
+
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+/* ==========================================
+   6. LINKS E BOTÕES
+========================================== */
+
+.rodape-botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 24px;
+  padding: 12px 0;
+
+  border-bottom: 1px solid #4a4a4a;
+  color: #f5f5f5;
+
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1.6;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.rodape-botao::after {
+  content: "↗";
+  display: inline-block;
+
+  color: #999;
+  font-size: 16px;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.rodape-botao:hover {
+  border-color: #fff;
+  color: #fff;
+}
+
+.rodape-botao:hover::after {
+  color: #fff;
+  transform: translate(3px, -3px);
+}
+
+.rodape-botao:focus-visible,
+.rodape-topo:focus-visible,
+.rodape-categorias a:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 5px;
+}
+
+/* ==========================================
+   7. CATEGORIAS
+========================================== */
+
+.rodape-categorias ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rodape-categorias li {
+  margin: 0;
+  padding: 0;
+}
+
+.rodape-categorias li a {
+  display: inline-block;
+
+  color: #b8b8b8;
+  font-size: 13px;
+  line-height: 1.6;
+  text-decoration: none;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.rodape-categorias li a:hover {
+  color: #fff;
+  transform: translateX(4px);
+}
+
+/* ==========================================
+   8. CONTATO E REDES SOCIAIS
+========================================== */
+
+.rodape-contato-descricao {
+  max-width: 270px;
+  margin: 0;
+
+  color: #a0a0a0;
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.rodape-contato .rodape-botao {
+  display: flex;
+}
+
+/* ==========================================
+   9. MAPA
+========================================== */
+
+.rodape-mapa {
+  width: 100%;
+  margin-top: 65px;
+  overflow: hidden;
+
+  border: 1px solid var(--rodape-linha);
+  background: #111;
+}
+
+.rodape-mapa iframe {
+  display: block;
+  width: 100%;
+  height: 340px;
+  border: 0;
+
+  filter: grayscale(1) contrast(0.9);
+  transition: filter 0.4s ease;
+}
+
+.rodape-mapa:hover iframe {
+  filter: grayscale(0.25) contrast(1);
+}
+
+/* ==========================================
+   10. MARCA GIGANTE
+========================================== */
+
+.rodape-marca {
+  position: relative;
+
+  margin: 0;
+  padding: 20px 10px 12px;
+
+  color: #181818;
+  font-size: clamp(80px, 17.2vw, 245px);
+  font-weight: 800;
+  line-height: 0.82;
+  letter-spacing: -0.105em;
+  text-align: center;
+  white-space: nowrap;
+
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ==========================================
+   11. BASE DO RODAPÉ
+========================================== */
+
+.rodape-base {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  width: min(1280px, calc(100% - 100px));
+  margin-inline: auto;
+  padding: 25px 0 30px;
+
+  border-top: 1px solid var(--rodape-linha);
+}
+
+.rodape-base p {
+  margin: 0;
+
+  color: #777;
+  font-size: 10px;
+  line-height: 1.8;
+}
+
+.rodape-topo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+
+  flex-shrink: 0;
+  color: #c6c6c6;
+
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  transition: color 0.3s ease;
+}
+
+.rodape-topo span {
+  display: inline-block;
+  font-size: 18px;
+
+  transition: transform 0.3s ease;
+}
+
+.rodape-topo:hover {
+  color: #fff;
+}
+
+.rodape-topo:hover span {
+  transform: translateY(-4px);
+}
+
+/* ==========================================
+   12. TABLETS
+========================================== */
+
+@media (max-width: 900px) {
+  .rodape-corpo {
+    width: calc(100% - 60px);
+    padding: 75px 0 50px;
+  }
+
+  .rodape-chamada {
+    margin-bottom: 60px;
+  }
+
+  .rodape-grade {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 45px 35px;
+  }
+
+  .rodape-contato {
+    grid-column: 1 / -1;
+  }
+
+  .rodape-contato-descricao {
+    max-width: 350px;
+  }
+
+  .rodape-marca {
+    font-size: 17vw;
+  }
+
+  .rodape-base {
+    width: calc(100% - 60px);
+  }
+}
+
+/* ==========================================
+   13. CELULARES
+========================================== */
+
+@media (max-width: 560px) {
+  .rodape-faixa-trilho {
+    gap: 30px;
+    padding: 15px 0;
+  }
+
+  .rodape-faixa-trilho span {
+    font-size: 9px;
+  }
+
+  .rodape-corpo {
+    width: calc(100% - 40px);
+    padding: 60px 0 40px;
+  }
+
+  .rodape-chamada {
+    margin-bottom: 45px;
+    font-size: clamp(43px, 12vw, 65px);
+    line-height: 1;
+  }
+
+  .rodape-grade {
+    grid-template-columns: 1fr;
+    gap: 42px;
+    padding-top: 30px;
+  }
+
+  .rodape-grade h3 {
+    margin-bottom: 18px;
+  }
+
+  .rodape-localizacao address {
+    font-size: 14px;
+  }
+
+  .rodape-categorias ul {
+    gap: 13px;
+  }
+
+  .rodape-contato {
+    grid-column: auto;
+  }
+
+  .rodape-contato-descricao {
+    font-size: 12px;
+  }
+
+  .rodape-botao {
+    margin-top: 18px;
+  }
+
+  .rodape-mapa {
+    margin-top: 45px;
+  }
+
+  .rodape-mapa iframe {
+    height: 250px;
+  }
+
+  .rodape-marca {
+    padding: 24px 0 18px;
+    font-size: 16.3vw;
+    letter-spacing: -0.09em;
+  }
+
+  .rodape-base {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 18px;
+
+    width: calc(100% - 40px);
+    padding: 22px 0 25px;
+  }
+
+  .rodape-base p {
+    font-size: 10px;
+  }
+}
+
+/* ==========================================
+   14. MOVIMENTO REDUZIDO
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .rodape-faixa-trilho {
+    animation: none;
+  }
+
+  .rodape *,
+  .rodape *::before,
+  .rodape *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+
+/* ========================================
+   LOCALIZAÇÃO
+======================================== */
+
+.rodape-localizacao address {
+  
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 14px;
+  font-style: normal;
+  line-height: 1.8;
+}
+
+.rodape-localizacao h3,
+.rodape-categorias h3,
+.rodape-contato h3 {
+  margin-bottom: 22px;
+}
+
+/* ========================================
+   REDES SOCIAIS E BOTÕES
+======================================== */
+
+.rodape-redes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.rodape-botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 13px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #fff;
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.rodape-botao:hover {
+  color: #111;
+  background-color: #fff;
+  border-color: #fff;
+}
+
+.rodape-botao span {
+  transition: transform 0.3s ease;
+}
+
+.rodape-botao:hover span {
+  transform: translate(3px, -3px);
+}
+
+/* ========================================
+   MAPA
+======================================== */
+
+.rodape-mapa {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  margin-top: 60px;
+  overflow: hidden;
+  background: #171717;
+}
+
+.rodape-mapa iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: grayscale(1) invert(0.9) contrast(0.85);
+  transition: filter 0.4s ease;
+}
+
+.rodape-mapa:hover iframe {
+  filter: grayscale(0.5) contrast(1);
+}
+
+/* ========================================
+   RESPONSIVIDADE
+======================================== */
+
+@media (max-width: 600px) {
+  .rodape-redes {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .rodape-redes .rodape-botao {
+    width: 100%;
+  }
+
+  .rodape-mapa {
+    height: 220px;
+    margin-top: 40px;
+  }
+}

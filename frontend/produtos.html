@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Produtos · Mk Imports</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/produtos.css">
+  <link rel="stylesheet" href="css/footer.css">
+</head>
+<body>
+  <a class="pular" href="#lista">Pular para as peças</a>
+
+  <nav class="barra" id="barra" aria-label="Principal">
+    <a class="marca" href="index.html" aria-label="Mk Imports, página inicial">MK <span>IMPORTS</span></a>
+    <button class="botao-menu" id="botao-menu" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+    <ul class="menu" id="menu" aria-busy="true">
+      <li class="menu-esqueleto"></li><li class="menu-esqueleto"></li><li class="menu-esqueleto"></li><li class="menu-esqueleto"></li>
+    </ul>
+  </nav>
+
+  <header class="pag-topo">
+    <nav class="trilha" id="trilha" aria-label="Você está em"></nav>
+    <h1 class="pag-titulo" id="titulo">Coleção</h1>
+    <p class="pag-qtd" id="qtd"></p>
+  </header>
+
+  <main id="lista">
+    <div class="filtros">
+      <div class="chips" id="chips" role="group" aria-label="Filtrar por tipo"></div>
+      <label class="ordem">
+        <span>Ordenar</span>
+        <select id="ordem">
+          <option value="recentes">Mais recentes</option>
+          <option value="menor">Menor preço</option>
+          <option value="maior">Maior preço</option>
+        </select>
+      </label>
+    </div>
+    <div class="grade-pecas" id="grade" aria-live="polite">
+      <div class="esq"></div><div class="esq"></div><div class="esq"></div><div class="esq"></div>
+    </div>
+  </main>
+
+  <!-- RODAPÉ (o mesmo da página inicial) -->
+  <footer class="rodape" id="localizacao">
+    <div class="rodape-faixa" aria-hidden="true">
+      <div class="rodape-faixa-trilho">
+        <span>Mk Imports</span><span>Peças importadas</span><span>Estilo é assinatura</span>
+        <span>Mk Imports</span><span>Peças importadas</span><span>Estilo é assinatura</span>
+      </div>
+    </div>
+    <div class="rodape-corpo">
+      <h2 class="rodape-chamada">Venha nos <em>visitar</em></h2>
+      <div class="rodape-grade">
+        <section>
+          <h3>Onde estamos</h3>
+          <address id="rodape-endereco"></address>
+          <p class="rodape-horario" id="rodape-horario" hidden></p>
+          <a class="rodape-botao rodape-rota" id="rodape-rota" target="_blank" rel="noopener" hidden>Como chegar</a>
+        </section>
+        <nav aria-label="Categorias">
+          <h3>Categorias</h3>
+          <ul id="rodape-categorias"></ul>
+        </nav>
+        <section id="rodape-contato">
+          <h3>Contato</h3>
+          <a class="rodape-botao" id="rodape-whatsapp" target="_blank" rel="noopener" hidden>WhatsApp</a>
+          <a class="rodape-botao" id="rodape-instagram" target="_blank" rel="noopener" hidden>Instagram</a>
+        </section>
+      </div>
+      <div class="rodape-mapa" id="rodape-mapa" hidden></div>
+    </div>
+    <p class="rodape-marca" aria-hidden="true">Mk Imports</p>
+    <div class="rodape-base">
+      <p>© <span id="ano"></span> Mk Imports. Todos os direitos reservados.</p>
+      <a class="rodape-topo" href="#barra">Voltar ao topo <span aria-hidden="true">↑</span></a>
+    </div>
+  </footer>
+
+  <script type="module" src="js/script.js"></script>
+  <script type="module" src="js/produtos.js"></script>
+  <script type="module" src="js/footer.js"></script>
+</body>
+</html>

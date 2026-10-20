@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Painel · Mk Imports</title>
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+  <!-- Aviso de carregamento: some quando o painel inicia; mostra o motivo se algo falhar -->
+  <p id="carregando" class="carregando">Carregando painel…</p>
+  <script>
+    (function () {
+      var aviso = document.getElementById("carregando");
+      function falha(msg) {
+        aviso.hidden = false;
+        aviso.className = "carregando falha";
+        aviso.textContent = "O painel não carregou. " + msg;
+      }
+      window.addEventListener("error", function (e) {
+        var detalhe = (e.target && e.target.src)
+          ? "Arquivo com problema: " + e.target.src + ". Confira se todos os arquivos da pasta js existem (admin.js, categorias.js, pecas.js, cloudinary-config.js, firebase-config.js) e se o servidor foi iniciado dentro da pasta frontend."
+          : "Erro: " + (e.message || "desconhecido") + ".";
+        falha(detalhe);
+      }, true);
+      window.addEventListener("unhandledrejection", function (e) {
+        falha("Erro: " + (e.reason && (e.reason.message || e.reason.code) || e.reason));
+      });
+    })();
+  </script>
+
+  <!-- TELA DE LOGIN -->
+  <section id="tela-login" hidden>
+    <div class="caixa-login">
+      <h1>Mk Imports · Painel</h1>
+      <form id="form-login">
+        <label class="campo">
+          <span>E-mail</span>
+          <input type="email" id="login-email" autocomplete="username" required>
+        </label>
+        <label class="campo">
+          <span>Senha</span>
+          <input type="password" id="login-senha" autocomplete="current-password" required>
+        </label>
+        <button class="botao" type="submit" id="botao-entrar">Entrar</button>
+        <p class="mensagem-erro" id="login-erro" role="alert"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- PAINEL DO ADM (aparece só depois do login) -->
+  <div id="tela-painel" hidden>
+    <header class="topo">
+      <div><strong>Mk Imports</strong> · Painel</div>
+      <div class="usuario">
+        <span id="usuario-email"></span>
+        <button class="botao secundario" id="botao-sair" type="button">Sair</button>
+      </div>
+    </header>
+
+    <nav class="abas" role="tablist">
+      <button role="tab" aria-selected="true" data-aba="categorias">Categorias</button>
+      <button role="tab" aria-selected="false" data-aba="pecas">Peças</button>
+    </nav>
+
+    <main>
+      <div class="status" id="status-conexao">Testando conexão com o banco de dados…</div>
+
+      <section class="secao" id="aba-categorias">
+        <h2>Categorias e subcategorias</h2>
+        <p class="aviso" id="categorias-aviso" role="status" hidden></p>
+
+        <form id="form-categoria" class="form-linha">
+          <label class="campo-linha">
+            <span>Nova categoria</span>
+            <input type="text" id="categoria-nome" maxlength="60" placeholder="Ex.: Camisetas" required>
+          </label>
+          <button class="botao" type="submit">Adicionar categoria</button>
+        </form>
+
+        <div id="area-importar" class="importar" hidden>
+          <p>A lista inicial da loja (Camisetas, Shorts, Calça, Calçados, Lupas, Bonés, Outros e Kits, com todas as subcategorias) está pronta para importar.</p>
+          <button class="botao" type="button" id="botao-importar">Importar lista inicial da loja</button>
+        </div>
+
+        <div id="lista-categorias"></div>
+      </section>
+
+      <section class="secao" id="aba-pecas" hidden>
+        <div class="secao-topo">
+          <h2>Peças</h2>
+          <button class="botao" type="button" id="botao-nova-peca">Nova peça</button>
+        </div>
+        <p class="aviso" id="pecas-aviso" role="status" hidden></p>
+
+        <form id="form-peca" class="form-peca" hidden>
+          <h3 id="titulo-form-peca">Nova peça</h3>
+
+          <div class="grade-form">
+            <label class="campo-linha largo">
+              <span>Nome da peça</span>
+              <input type="text" id="peca-nome" maxlength="120" placeholder="Ex.: Camiseta Malha Pima Preta" required>
+            </label>
+            <label class="campo-linha">
+              <span>Preço (R$)</span>
+              <input type="text" id="peca-preco" inputmode="decimal" placeholder="129,90" required>
+            </label>
+            <label class="campo-linha">
+              <span>Categoria</span>
+              <select id="peca-categoria" required></select>
+            </label>
+            <label class="campo-linha">
+              <span>Subcategoria</span>
+              <select id="peca-subcategoria"></select>
+            </label>
+            <label class="campo-linha largo">
+              <span>Descrição (opcional)</span>
+              <textarea id="peca-descricao" rows="3" maxlength="1000" placeholder="Tecido, caimento, cuidados…"></textarea>
+            </label>
+          </div>
+
+          <fieldset>
+            <legend>Fotos</legend>
+            <div id="fotos-lista" class="fotos-lista"></div>
+            <div class="linha-acoes">
+              <button class="botao secundario pequeno" type="button" id="botao-enviar-fotos">Enviar fotos</button>
+              <input type="file" id="foto-arquivo" accept="image/*" multiple hidden>
+              <input type="url" id="foto-url" class="campo-url" placeholder="ou cole o link de uma imagem (https://…)" aria-label="Link de uma imagem">
+              <button class="botao secundario pequeno" type="button" id="botao-foto-url">Adicionar link</button>
+            </div>
+            <p class="dica" id="foto-dica"></p>
+          </fieldset>
+
+          <fieldset>
+            <legend>Variações (cor, tamanho e estoque)</legend>
+            <div class="gerador">
+              <label class="campo-linha">
+                <span>Cores (separe por vírgula)</span>
+                <input type="text" id="gerar-cores" placeholder="Preto, Branco, Azul">
+              </label>
+              <label class="campo-linha">
+                <span>Tamanhos (separe por vírgula)</span>
+                <input type="text" id="gerar-tamanhos" placeholder="P, M, G, GG">
+              </label>
+              <button class="botao secundario" type="button" id="botao-gerar">Gerar combinações</button>
+            </div>
+            <p class="dica">Peças sem cor ou sem tamanho (ex.: carteira) podem deixar o campo vazio, e o sistema usa "Único".</p>
+            <div class="tabela-rolagem">
+              <table class="tabela-variacoes">
+                <thead>
+                  <tr><th>Cor</th><th>Tamanho</th><th>Estoque</th><th><span class="so-leitor">Ações</span></th></tr>
+                </thead>
+                <tbody id="variacoes-corpo"></tbody>
+              </table>
+            </div>
+            <button class="botao secundario pequeno" type="button" id="botao-add-variacao">Adicionar variação manualmente</button>
+          </fieldset>
+
+          <div class="marcadores">
+            <label><input type="checkbox" id="peca-ativa" checked> Mostrar na vitrine</label>
+            <label><input type="checkbox" id="peca-destaque"> Peça em destaque</label>
+          </div>
+
+          <div class="linha-acoes">
+            <button class="botao" type="submit" id="botao-salvar-peca">Salvar peça</button>
+            <button class="botao secundario" type="button" id="botao-cancelar-peca">Cancelar</button>
+          </div>
+        </form>
+
+        <div id="lista-pecas"></div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="../js/admin.js"></script>
+</body>
+</html>
