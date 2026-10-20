@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Meu Carrinho | MK IMPORTS</title>
+  <meta name="description" content="Revise seus produtos e finalize seu pedido na MK IMPORTS.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./css/carrinho.css">
+</head>
+
+<body>
+
+  <header class="cabecalho">
+    <a href="./index.html" class="logo">MK <span>IMPORTS</span></a>
+
+    <a href="./index.html" class="continuar-comprando">
+      ← Continuar comprando
+    </a>
+  </header>
+
+  <main class="pagina-carrinho">
+
+    <section class="titulo-carrinho">
+      <p class="sobretitulo">SUA SELEÇÃO</p>
+      <h1>MEU CARRINHO<span>.</span></h1>
+      <p>Confira suas peças antes de finalizar o pedido.</p>
+    </section>
+
+    <div class="layout-carrinho">
+
+      <section class="lista-carrinho">
+        <div class="cabecalho-lista">
+          <h2>Seus produtos</h2>
+          <span id="quantidade-itens">0 itens</span>
+        </div>
+
+        <div id="carrinho-itens" class="carrinho-itens">
+          <p class="carregando">Carregando seu carrinho...</p>
+        </div>
+
+        <div class="acoes-carrinho">
+          <a href="./index.html">← Continuar comprando</a>
+          <button type="button" id="limpar-carrinho">
+            Limpar carrinho
+          </button>
+        </div>
+      </section>
+
+      <aside class="resumo-carrinho">
+        <h2>Resumo do pedido</h2>
+
+        <div class="linha-resumo">
+          <span>Produtos</span>
+          <span id="subtotal-carrinho">R$ 0,00</span>
+        </div>
+
+        <div class="linha-resumo">
+          <span>Frete</span>
+          <span class="frete-info">A combinar</span>
+        </div>
+
+        <div class="divisor"></div>
+
+        <div class="linha-total">
+          <span>Total dos produtos</span>
+          <strong id="total-carrinho">R$ 0,00</strong>
+        </div>
+
+        <p class="aviso-finalizacao">
+          O pedido será enviado pelo WhatsApp. Frete e pagamento serão
+          combinados com a loja.
+        </p>
+
+        <button
+          type="button"
+          id="finalizar-compra"
+          class="botao-finalizar"
+          disabled
+        >
+          FINALIZAR PELO WHATSAPP
+          <span>↗</span>
+        </button>
+
+        <p id="mensagem-carrinho" class="mensagem-carrinho" role="status"></p>
+
+        <div class="seguranca-carrinho">
+          <span>✓</span>
+          Finalização direta com a MK IMPORTS
+        </div>
+      </aside>
+
+    </div>
+
+  </main>
+
+  <footer class="rodape">v
+    <p>ESTILO É ATITUDE.</p>
+  </footer>
+
+  <script src="./js/carrinho.js" type="module"></script>
+
+</body>
+</html>
