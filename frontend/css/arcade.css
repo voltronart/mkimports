@@ -1,0 +1,41 @@
+/* Quadro do mini game: máquina de arcade entre as seções */
+.arcade {
+  padding: clamp(4rem,9vw,7rem) clamp(1rem,5vw,4rem); text-align: center; color: #0b0b0b; overflow: hidden;
+  background: repeating-linear-gradient(135deg, rgba(0,0,0,.07) 0 2px, transparent 2px 16px), linear-gradient(180deg, #dcb971, #b88f45);
+}
+.arcade-titulo { margin: 0; font: 400 clamp(3rem,11vw,9rem)/.9 var(--fonte-titulo); text-transform: uppercase; }
+.arcade-titulo em { font-style: normal; color: transparent; -webkit-text-stroke: 2px #0b0b0b; }
+.arcade-sub { margin: 1rem 0 clamp(2rem,5vw,3.5rem); font-size: .85rem; letter-spacing: .3em; text-transform: uppercase; }
+
+.arcade-maquina {
+  max-width: 1000px; margin: 0 auto; padding: 1rem 1.2rem 1.2rem; background: #0b0b0b; border-radius: 28px 28px 16px 16px;
+  box-shadow: 0 0 0 4px #0b0b0b, 0 0 0 6px var(--dourado), 0 40px 80px -30px rgba(0,0,0,.7);
+}
+.arcade-letreiro {
+  margin-bottom: 1rem; padding: .7rem; font: 400 clamp(1.2rem,3.5vw,2rem) var(--fonte-titulo); letter-spacing: .35em; color: var(--dourado);
+  text-shadow: 0 0 14px rgba(198,161,91,.8); border: 1px solid rgba(198,161,91,.5); animation: neon 2.4s ease-in-out infinite alternate;
+}
+.arcade-tela { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #000; border: 3px solid #1c1810; box-shadow: 0 0 40px rgba(198,161,91,.25) inset; }
+.arcade-tela iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.arcade-iniciar {
+  position: absolute; inset: 0; z-index: 2; display: grid; place-content: center; gap: .6rem; width: 100%; cursor: pointer; border: 0;
+  font: 400 clamp(1.4rem,4vw,2.6rem) var(--fonte-titulo); letter-spacing: .2em; text-transform: uppercase; color: var(--dourado);
+  background: radial-gradient(circle at 50% 40%, rgba(198,161,91,.25), #000 70%); transition: color .3s;
+}
+.arcade-iniciar:hover, .arcade-iniciar:focus-visible { color: #fff; }
+.arcade-iniciar span { font-size: 3rem; animation: pulsar 1.2s ease-in-out infinite alternate; }
+.arcade-sair { position: absolute; top: .6rem; right: .6rem; z-index: 3; width: 40px; height: 40px; font-size: 1.1rem; color: #fff; background: rgba(0,0,0,.65); border: 1px solid var(--dourado); border-radius: 50%; }
+
+.arcade-painel { display: flex; justify-content: center; align-items: center; gap: 1.6rem; padding-top: 1.2rem; }
+.arcade-painel i { width: 46px; height: 46px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #ffdf9a, #c6a15b 60%, #7a5a1e); box-shadow: 0 5px 0 #4b3611; }
+.arcade-painel b { position: relative; width: 14px; height: 40px; margin: 0 1.2rem; border-radius: 7px; background: var(--dourado); }
+.arcade-painel b::before { content: ""; position: absolute; left: 50%; top: -16px; width: 34px; height: 34px; margin-left: -17px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #ff8a7a, #c0392b 65%); }
+.arcade-dica { margin: 1.4rem 0 0; font-size: .85rem; letter-spacing: .15em; text-transform: uppercase; }
+
+/* Celular: o jogo abre em tela cheia */
+.arcade-tela.cheio { position: fixed; inset: 0; z-index: 300; aspect-ratio: auto; border: 0; }
+@media (hover: none) and (pointer: coarse) { .arcade-dica { display: none; } }
+
+@keyframes neon { from { opacity: .7; } to { opacity: 1; } }
+@keyframes pulsar { to { scale: 1.2; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; } }

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <script>if (/[?&]embed/.test(location.search)) document.documentElement.classList.add("embutido");</script>
+  <title>Abra a Loja · Mk Imports</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/jogo.css">
+</head>
+<body>
+  <main class="jogo">
+    <a class="voltar" href="index.html">← Voltar à loja</a>
+    <canvas id="tela" aria-label="Mini game: pegue as camisetas e abra a loja"></canvas>
+    <p class="dica"><b>A / D</b> mover · <b>ESPAÇO</b> pular · <b>J</b> atacar</p>
+    <div class="controles" aria-hidden="true">
+      <div><button data-btn="esq">◀</button><button data-btn="dir">▶</button></div>
+      <div><button data-btn="atq">ATACAR</button><button data-btn="pulo">PULAR</button></div>
+    </div>
+    <a class="cta" id="cta" href="index.html" hidden>Entrar na loja</a>
+  </main>
+  <script type="module" src="js/jogo.js"></script>
+</body>
+</html>

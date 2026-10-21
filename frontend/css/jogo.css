@@ -1,0 +1,21 @@
+:root { --dourado: #c6a15b; }
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; min-height: 100vh; font-family: "Jost", system-ui, sans-serif; color: #fff; background: radial-gradient(60% 50% at 50% 0, #2a2112, #0b0b0b); -webkit-touch-callout: none; user-select: none; }
+.jogo { max-width: 960px; margin: 0 auto; padding: 1rem; }
+.voltar { display: inline-block; margin-bottom: .8rem; font-size: .8rem; letter-spacing: .2em; text-transform: uppercase; color: var(--dourado); text-decoration: none; }
+canvas { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #000; border: 2px solid var(--dourado); box-shadow: 0 30px 80px -30px rgba(198,161,91,.4); touch-action: none; }
+.dica { margin: 1rem 0 0; text-align: center; font-size: .85rem; letter-spacing: .12em; color: rgba(255,255,255,.7); }
+.dica b { color: var(--dourado); }
+.controles { display: none; justify-content: space-between; gap: 1rem; margin-top: 1rem; touch-action: none; }
+.controles div { display: flex; gap: .7rem; }
+.controles button { min-width: 74px; height: 74px; padding: 0 1rem; font: 400 1rem "Anton", Impact, sans-serif; letter-spacing: .1em; color: var(--dourado); background: rgba(198,161,91,.12); border: 2px solid var(--dourado); border-radius: 18px; touch-action: none; -webkit-tap-highlight-color: transparent; }
+.controles button:active { background: var(--dourado); color: #111; }
+@media (hover: none) and (pointer: coarse) { .controles { display: flex; } .dica { display: none; } }
+.cta { display: block; width: fit-content; margin: 1.5rem auto 0; padding: 1rem 2.4rem; font: 400 1.2rem "Anton", Impact, sans-serif; letter-spacing: .2em; text-transform: uppercase; text-decoration: none; color: #111; background: var(--dourado); }
+
+/* Modo embutido: o jogo dentro do quadro da vitrine (jogo.html?embed=1) */
+.embutido body { min-height: 0; background: #000; }
+.embutido .voltar, .embutido .dica, .embutido .cta { display: none; }
+.embutido .jogo { display: flex; flex-direction: column; justify-content: center; min-height: 100vh; max-width: none; padding: 0; }
+.embutido canvas { border: 0; box-shadow: none; }

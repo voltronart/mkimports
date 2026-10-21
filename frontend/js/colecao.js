@@ -3,6 +3,7 @@
 import { db } from "./firebase-config.js";
 import { collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
+const POSICAO_ARCADE = 4; // o quadro do jogo entra depois da 4ª categoria (use 0 para o começo)
 const LAYOUTS = ["camisetas", "shorts", "calca", "calcados", "lupas", "bones", "outros", "kits"];
 
 // Usado só se o banco estiver vazio ou indisponível
@@ -85,6 +86,8 @@ function secao(cat, n, total) {
   const raiz = document.getElementById("vitrine-categorias");
   const cats = await carregar();
   raiz.replaceChildren(...cats.map((c, i) => secao(c, i, cats.length)));
+  const arcade = document.getElementById("arcade"); // quadro do mini game, escrito no index.html
+  if (arcade) raiz.insertBefore(arcade, raiz.children[POSICAO_ARCADE] ?? null);
 
   const obs = new IntersectionObserver((entradas) => {
     entradas.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("visivel"); obs.unobserve(e.target); } });

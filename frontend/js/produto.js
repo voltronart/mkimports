@@ -29,8 +29,7 @@ const elementoDescricao = $("produto-descricao");
 const elementoCores = $("produto-cores");
 const elementoTamanhos = $("produto-tamanhos");
 const elementoQuantidade = $("produto-quantidade");
-
-const botaoAdicionar = $("produto-adicionar");
+const botaoAdicionar = $("botao-adicionar-carrinho");
 const elementoAviso = $("produto-aviso");
 
 // Estado atual do produto
