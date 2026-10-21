@@ -77,6 +77,7 @@ a {
 
 /* 3. NAVBAR
    ---------------------------------------------------------- */
+
 .barra {
   position: fixed;
   inset: 0 0 auto;
@@ -88,9 +89,13 @@ a {
   height: var(--altura-barra);
   padding-inline: clamp(1rem, 4vw, 3rem);
   color: var(--branco);
-  background: rgba(11, 11, 11, 0.96);
-  border-bottom: 1px solid rgba(198, 161, 91, 0.2);
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition:
+    background-color 0.4s ease,
+    border-color 0.4s ease;
 }
+
 
 .barra.solida,
 .barra.menu-aberto {
@@ -281,159 +286,112 @@ a {
 
 /* 5. HERO
    ---------------------------------------------------------- */
+
+/* HEADER EDITORIAL */
 .hero {
   position: relative;
   isolation: isolate;
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  align-items: center;
-  gap: clamp(2rem, 5vw, 5rem);
+  width: 100%;
   min-height: 100vh;
   min-height: 100svh;
-  padding: calc(var(--altura-barra) + 3rem) clamp(1.25rem, 6vw, 6rem) 5rem;
   overflow: hidden;
-  color: var(--preto);
-  background: var(--marfim);
+  background: var(--preto);
 }
 
-/* Camada que contém a imagem. Não escurece a fotografia. */
+/* Fotografia ocupa todo o header */
 .hero-textura {
   position: absolute;
   inset: 0;
   z-index: -1;
   overflow: hidden;
-  background: #dce8f3;
+  background: var(--preto);
 }
 
-/* Mantém a imagem clara e inteira, sem cortar o produto. */
+/* Imagem editorial */
 .hero-textura-img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  background-image: url("../assets/head.jpg");
+
+  background-image: url("../assets/fundo.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-/* Desativa o véu escuro usado na versão anterior. */
-.hero::before {
-  content: "";
+
+
+/* MONOGRAMA EDITORIAL MK */
+.hero-monograma {
   position: absolute;
   inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  
-  background: linear-gradient(
-    90deg,
-    rgba(246, 242, 234, 0.88) 0%,
-    rgba(246, 242, 234, 0.65) 35%,
-    rgba(246, 242, 234, 0.12) 65%,
-    transparent 100%
-  );
-}
+  z-index: 2;
 
-.hero-conteudo {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: 620px;
-  padding-block: 2rem;
-}
-
-.hero-pre {
-  margin: 0 0 1.2rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.28em;
-  line-height: 1.5;
-  text-transform: uppercase;
-  color: #80622b;
-}
-
-.hero h1 {
-  max-width: 10ch;
-  margin: 0;
-  font-family: var(--fonte-titulo);
-  font-size: clamp(2.8rem, 6.2vw, 6.3rem);
-  font-weight: 400;
-  line-height: 1.15;
-  letter-spacing: -0.025em;
-  text-transform: uppercase;
-  color: var(--preto);
-}
-
-.hero h1 em {
-  font-style: normal;
-  color: #9a7737;
-}
-
-.hero-texto {
-  max-width: 38ch;
-  margin: 1.5rem 0 2rem;
-  font-size: clamp(1rem, 1.2vw, 1.1rem);
-  line-height: 1.7;
-  color: #4c4943;
-}
-
-.botao-hero {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 48px;
-  padding: 0.95rem 1.6rem;
-  font-size: 0.76rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: var(--branco);
-  background: var(--preto);
-  border: 1px solid var(--preto);
-}
-
-.botao-hero:hover,
-.botao-hero:focus-visible {
-  color: var(--preto);
-  background: transparent;
-}
-
-.hero-rolar {
-  position: absolute;
-  right: clamp(1.25rem, 4vw, 3rem);
-  bottom: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  color: #4c4943;
-  font-size: 0.65rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
-.hero-rolar span {
-  display: block;
-  width: 28px;
-  height: 1px;
-  background: var(--dourado);
-}
-
-
-/* 6. SEÇÃO PROVISÓRIA
-   ---------------------------------------------------------- */
-.provisoria {
   display: grid;
   place-items: center;
-  min-height: 70vh;
-  padding: 2rem;
-  font-size: 0.8rem;
-  letter-spacing: 0.25em;
-  text-align: center;
-  text-transform: uppercase;
-  color: var(--cinza);
-  background: var(--marfim);
+
+  padding: 1rem;
+  pointer-events: none;
 }
+
+.hero-monograma-svg {
+  display: block;
+  width: min(72vw, 620px);
+  height: auto;
+  overflow: visible;
+}
+
+.hero-monograma-letras {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 190px;
+  font-weight: 500;
+  letter-spacing: 8px;
+
+  fill: transparent;
+  stroke: #c6a15b;
+  stroke-width: 1.2;
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+
+  animation:
+    mk-desenhar 2.5s ease forwards,
+    mk-preencher 1s ease 2s forwards;
+}
+
+@keyframes mk-desenhar {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes mk-preencher {
+  to {
+    fill: #c6a15b;
+    fill-opacity: 0.9;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-monograma-svg {
+    width: 82vw;
+    max-width: 440px;
+  }
+
+  .hero-monograma-letras {
+    font-size: 190px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-monograma-letras {
+    animation: none;
+    fill: #c6a15b;
+    fill-opacity: 0.9;
+    stroke-dashoffset: 0;
+  }
+}
+
 
 
 /* 7. CELULAR E TABLET
@@ -505,34 +463,24 @@ a {
     columns: 1;
   }
 
-  .hero {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 1.5rem;
-    padding-inline: clamp(1.25rem, 4vw, 3rem);
+ .hero {
+    display: block;
+    padding: 0;
   }
 
-  .hero-textura {
-    left: 42%;
+ .hero-textura {
+    inset: 0;
+    left: 0;
   }
 
-  .hero h1 {
-    font-size: clamp(2.6rem, 6vw, 4.8rem);
-  }
-
-  .hero-pre {
-    letter-spacing: 0.18em;
-  }
+  
 }
 
 @media (max-width: 640px) {
   .hero {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-    gap: 0;
-    min-height: auto;
-    padding: calc(var(--altura-barra) + 2.5rem) 1.25rem 2rem;
+    min-height: 100svh;
+    min-height: 100dvh;
+    padding: 0;
   }
 
   .hero-conteudo {
@@ -551,20 +499,19 @@ a {
   }
 
   .hero-textura {
-    position: relative;
-    inset: auto;
-    order: 2;
-    width: calc(100% + 2.5rem);
-    height: min(78vw, 360px);
-    margin: 2rem -1.25rem 0;
-    flex: 0 0 auto;
-    background: #dce8f3;
+    position: absolute;
+    inset: 0;
+    order: initial;
+    width: 100%;
+    height: 100%;
+    margin: 0;
   }
 
-  .hero-textura-img {
+ .hero-textura-img {
     background-position: center;
-    background-size: contain;
+    background-size: cover;
   }
+}
 
   .hero-rolar {
     position: static;
@@ -572,8 +519,26 @@ a {
     margin-top: 1.5rem;
   }
 
-  .provisoria {
-    min-height: 50vh;
-    padding: 1.5rem;
-  }
-}
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+ 
+
+  
