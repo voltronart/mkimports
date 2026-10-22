@@ -73,10 +73,10 @@ function secao(cat, n, total) {
   return el("section", { classe: "cat", id: "cat-" + chave, "data-layout": LAYOUTS.includes(chave) ? chave : "geral" },
     el("header", { classe: "cat-topo" },
       el("div", {},
-        el("span", { classe: "cat-num", texto: `${pad(n + 1)} / ${pad(total)}` }),
+       
         el("h2", { classe: "cat-titulo", texto: cat.nome })
       ),
-      el("p", { classe: "cat-qtd", texto: `${qtd} ${qtd === 1 ? "estilo" : "estilos"}` })
+    
     ),
     el("div", { classe: "cat-lista" }, ...cat.itens.map(card))
   );
