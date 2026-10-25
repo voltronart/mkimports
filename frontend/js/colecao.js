@@ -61,7 +61,7 @@ function card(item, i) {
   if (item.capa) img.style.setProperty("--foto", `url("${item.capa.replace(/"/g, "%22")}")`);
   return el("a", { classe: "sub", href: item.href, style: `--i:${i}` },
     img,
-    el("span", { classe: "sub-n", texto: pad(i + 1) }),
+    
     el("span", { classe: "sub-nome", texto: item.nome }),
     el("span", { classe: "sub-seta", "aria-hidden": "true", texto: "→" })
   );
