@@ -30,8 +30,13 @@
 
   <div class="intro-centro">
     <div class="intro-logo">
-      <h1>Mk</h1>
-      <span class="intro-logo-sub">IMPORTS</span>
+      <img
+        src="assets/logo.png"
+        alt="MK Imports"
+        width="200"
+        height="200"
+        fetchpriority="high"
+      >
     </div>
 
     <p class="intro-assinatura">
@@ -66,22 +71,81 @@
   
 
   <!-- NAVBAR: as categorias e subcategorias são carregadas do Firebase pelo js/header.js -->
-  <nav class="barra" id="barra" aria-label="Principal">
-    <a class="marca" href="index.html" aria-label="Mk Imports, página inicial">MK <span>IMPORTS</span></a>
-    <button class="botao-menu" id="botao-menu" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
-    <ul class="menu" id="menu" aria-busy="true">
-      <li class="menu-esqueleto"></li><li class="menu-esqueleto"></li><li class="menu-esqueleto"></li><li class="menu-esqueleto"></li>
-    </ul>
-  </nav>
+  
+<!-- Barra promocional superior -->
+<div class="barra-promocional" aria-label="Avisos da loja">
+  <button class="promo-seta" id="promo-anterior" aria-label="Aviso anterior">
+    &#10094;
+  </button>
+
+  <p class="promo-mensagem" id="promo-mensagem" aria-live="polite">
+    Confira as novidades da MK Imports
+  </p>
+
+  <button class="promo-seta" id="promo-proximo" aria-label="Próximo aviso">
+    &#10095;
+  </button>
+</div>
+
+<!-- Navegação principal -->
+<nav class="barra" id="barra" aria-label="Principal">
+
+  <a class="marca" href="index.html" aria-label="MK Imports, página inicial">
+    <img src="assets/logo.png" alt="MK Imports">
+  </a>
+
+  <button
+    class="botao-menu"
+    id="botao-menu"
+    type="button"
+    aria-expanded="false"
+    aria-controls="menu"
+  >
+    Menu
+  </button>
+
+  <ul class="menu" id="menu" aria-busy="true">
+    <li class="menu-esqueleto"></li>
+    <li class="menu-esqueleto"></li>
+    <li class="menu-esqueleto"></li>
+    <li class="menu-esqueleto"></li>
+  </ul>
+
+</nav>
+
 
   
 <!-- HEADER EDITORIAL -->
 <header class="hero" id="topo" aria-label="Campanha editorial MK Imports">
 
-  <div class="hero-textura" aria-hidden="true">
-    
-    <div class="hero-textura-img"></div>
-  </div>
+<div class="hero-textura" aria-hidden="true">
+
+  <!-- Thumbnail exibida enquanto o vídeo carrega -->
+  <img
+    class="hero-thumbnail"
+    src="assets/fundo.jpg"
+    alt=""
+    fetchpriority="high"
+  >
+
+  <!-- Vídeo editorial -->
+  <video
+    class="hero-video"
+    muted
+    autoplay
+    loop
+    playsinline
+    preload="none"
+    poster="assets/fundo.jpg"
+    aria-hidden="true"
+  >
+    <source
+      data-src="assets/fundo.mp4"
+      type="video/mp4"
+    >
+  </video>
+
+</div>
 
 </header>
 
@@ -192,6 +256,7 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
   <script type="module" src="js/script.js"></script>
   <script type="module" src="js/intro.js"></script>
+  <script type="module" src="js/header.js"></script>
   <script type="module" src="js/arcade.js"></script>
   <script type="module" src="js/colecao.js"></script>
 </body>

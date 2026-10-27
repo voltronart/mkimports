@@ -17,7 +17,8 @@
   --fonte-titulo: "Anton", Impact, "Arial Narrow", sans-serif;
   --fonte-texto: "Jost", system-ui, -apple-system, "Segoe UI", sans-serif;
 
-  --altura-barra: 68px;
+  --altura-barra: 78px;
+--altura-promo: 36px;
 }
 
 
@@ -75,27 +76,88 @@ a {
 }
 
 
-/* 3. NAVBAR
-   ---------------------------------------------------------- */
 
-.barra {
+/* BARRA PROMOCIONAL */
+.barra-promocional {
   position: fixed;
   inset: 0 0 auto;
+  z-index: 60;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+
+  width: 100%;
+  height: var(--altura-promo);
+  padding-inline: 1rem;
+
+  color: var(--branco);
+  background: var(--preto);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.promo-mensagem {
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.promo-seta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.3rem;
+  color: var(--branco);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.promo-seta:hover {
+  color: var(--dourado);
+  opacity: 1;
+}
+
+@media (max-width: 640px) {
+  .barra-promocional {
+    gap: 0.8rem;
+  }
+
+  .promo-mensagem {
+    font-size: 0.58rem;
+    letter-spacing: 0.06em;
+  }
+}
+
+
+
+/* 3. NAVBAR
+   ---------------------------------------------------------- */
+.barra {
+  position: fixed;
+  inset: var(--altura-promo) 0 auto;
   z-index: 50;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.5rem;
+
   height: var(--altura-barra);
   padding-inline: clamp(1rem, 4vw, 3rem);
   color: var(--branco);
   background: transparent;
   border-bottom: 1px solid transparent;
+
   transition:
     background-color 0.4s ease,
     border-color 0.4s ease;
 }
-
 
 .barra.solida,
 .barra.menu-aberto {
@@ -103,23 +165,29 @@ a {
   border-bottom-color: rgba(198, 161, 91, 0.35);
 }
 
+
 .marca {
-  font-family: var(--fonte-titulo);
-  font-size: 1.6rem;
-  font-weight: 400;
-  letter-spacing: 0.12em;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
   text-decoration: none;
-  white-space: nowrap;
 }
 
-.marca span {
-  color: var(--dourado);
+.marca img {
+  display: block;
+  width: 115px;
+  max-height: 58px;
+  object-fit: contain;
 }
 
 .menu {
+  grid-column: 2;
+  justify-self: center;
+
   display: flex;
   align-items: center;
   gap: 2rem;
+
   margin: 0;
   padding: 0;
   list-style: none;
@@ -178,16 +246,8 @@ a {
 }
 
 .botao-menu {
-  display: none;
-  padding: 0.5rem 1rem;
-  font: inherit;
-  font-size: 0.78rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--branco);
-  background: transparent;
-  border: 1px solid rgba(198, 161, 91, 0.6);
-  cursor: pointer;
+  grid-column: 3;
+  justify-self: end;
 }
 
 .botao-menu[aria-expanded="true"] {
@@ -291,108 +351,82 @@ a {
 .hero {
   position: relative;
   isolation: isolate;
+
   width: 100%;
-  min-height: 100vh;
-  min-height: 100svh;
+  height: 100vh;
+  height: 100svh;
+
   overflow: hidden;
   background: var(--preto);
 }
 
-/* Fotografia ocupa todo o header */
+/* CAMADA DE FUNDO */
 .hero-textura {
   position: absolute;
   inset: 0;
   z-index: -1;
+
   overflow: hidden;
   background: var(--preto);
 }
 
-/* Imagem editorial */
-.hero-textura-img {
+/* THUMBNAIL */
+.hero-thumbnail {
   position: absolute;
   inset: 0;
+
   width: 100%;
   height: 100%;
 
-  background-image: url("../assets/fundo.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  object-fit: cover;
+  object-position: center;
+
+  transition: opacity 1s ease;
 }
 
-
-
-/* MONOGRAMA EDITORIAL MK */
-.hero-monograma {
+/* VÍDEO */
+.hero-video {
   position: absolute;
   inset: 0;
-  z-index: 2;
 
-  display: grid;
-  place-items: center;
+  width: 100%;
+  height: 100%;
 
-  padding: 1rem;
-  pointer-events: none;
+  object-fit: cover;
+  object-position: center;
+
+  opacity: 0;
+  transition: opacity 1s ease;
 }
 
-.hero-monograma-svg {
-  display: block;
-  width: min(72vw, 620px);
-  height: auto;
-  overflow: visible;
+
+
+.hero-video.video-pronto {
+  opacity: 1;
+}
+.hero-thumbnail.thumbnail-oculta {
+  opacity: 0;
 }
 
-.hero-monograma-letras {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 190px;
-  font-weight: 500;
-  letter-spacing: 8px;
-
-  fill: transparent;
-  stroke: #c6a15b;
-  stroke-width: 1.2;
-  stroke-dasharray: 1200;
-  stroke-dashoffset: 1200;
-
-  animation:
-    mk-desenhar 2.5s ease forwards,
-    mk-preencher 1s ease 2s forwards;
-}
-
-@keyframes mk-desenhar {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-@keyframes mk-preencher {
-  to {
-    fill: #c6a15b;
-    fill-opacity: 0.9;
-  }
-}
-
+/* CELULARES */
 @media (max-width: 640px) {
-  .hero-monograma-svg {
-    width: 82vw;
-    max-width: 440px;
+  .hero {
+    height: 100svh;
   }
 
-  .hero-monograma-letras {
-    font-size: 190px;
+  .hero-thumbnail,
+  .hero-video {
+    object-position: center;
   }
 }
 
+/* ACESSIBILIDADE */
 @media (prefers-reduced-motion: reduce) {
-  .hero-monograma-letras {
-    animation: none;
-    fill: #c6a15b;
-    fill-opacity: 0.9;
-    stroke-dashoffset: 0;
+  .hero-thumbnail,
+  .hero-video {
+    transition: none;
   }
 }
-
-
 
 /* 7. CELULAR E TABLET
    ---------------------------------------------------------- */
@@ -408,6 +442,7 @@ a {
     top: var(--altura-barra);
     right: 0;
     left: 0;
+    grid-column: 1 / -1;
     display: none;
     flex-direction: column;
     align-items: stretch;
