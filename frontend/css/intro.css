@@ -25,20 +25,11 @@
   transform: scale(1);
   filter: brightness(.48) contrast(1.15);
 
-  animation: zoom-reverso 5s ease-out forwards;
 
   will-change: transform, filter;
 }
 
-@keyframes zoom-reverso {
-  from {
-    transform: scale(1);
-  }
 
-  to {
-    transform: scale(1.05);
-  }
-}
 
 .intro-luz {
   position: absolute;

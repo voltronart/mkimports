@@ -71,21 +71,7 @@
   
 
   <!-- NAVBAR: as categorias e subcategorias são carregadas do Firebase pelo js/header.js -->
-  
-<!-- Barra promocional superior -->
-<div class="barra-promocional" aria-label="Avisos da loja">
-  <button class="promo-seta" id="promo-anterior" aria-label="Aviso anterior">
-    &#10094;
-  </button>
 
-  <p class="promo-mensagem" id="promo-mensagem" aria-live="polite">
-    Confira as novidades da MK Imports
-  </p>
-
-  <button class="promo-seta" id="promo-proximo" aria-label="Próximo aviso">
-    &#10095;
-  </button>
-</div>
 
 <!-- Navegação principal -->
 <nav class="barra" id="barra" aria-label="Principal">
@@ -94,15 +80,19 @@
     <img src="assets/logo.png" alt="MK Imports">
   </a>
 
-  <button
-    class="botao-menu"
-    id="botao-menu"
-    type="button"
-    aria-expanded="false"
-    aria-controls="menu"
-  >
-    Menu
-  </button>
+
+<button
+  class="botao-menu"
+  id="botao-menu"
+  type="button"
+  aria-expanded="false"
+  aria-controls="menu"
+  aria-label="Abrir menu"
+>
+  <span class="texto-botao-menu">MENU</span>
+  <span class="icone-fechar-menu" aria-hidden="true">×</span>
+</button>
+
 
   <ul class="menu" id="menu" aria-busy="true">
     <li class="menu-esqueleto"></li>
@@ -117,6 +107,11 @@
   
 <!-- HEADER EDITORIAL -->
 <header class="hero" id="topo" aria-label="Campanha editorial MK Imports">
+
+<h1 class="hero-marca" aria-label="MK Imports">
+  <span class="hero-mk">MK</span>
+  <span class="hero-imports">IMPORTS</span>
+</h1>
 
 <div class="hero-textura" aria-hidden="true">
 
@@ -241,15 +236,7 @@
 
 </div>
 
-<!-- MAPA -->
-<div class="rodape-mapa">
-  <iframe
-    src="https://www.google.com/maps?q=Jaiba%2C%20Minas%20Gerais%2C%20Brasil&output=embed"
-    title="Localização da MK Imports"
-    loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade"
-  ></iframe>
-</div>
+
 
 
 
